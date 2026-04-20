@@ -1,5 +1,5 @@
 *{
-  *{
+
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -7,9 +7,48 @@
 }
 
 :root{
-  --primary-color: #700000;
+  --primary-color:  #424242;
   --secondary-color: black;
   --third-color: white;
   --square-color: rgba(255,255,255,0.5); 
+
+}
+.opject::before{
+ content: '';
+  position: absolute;
+  top: -350px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: var(--square-color); ;
+  filter: blur(200px);
+  z-index: 0;
+}
+
+.navbar{
+  background: #fff;
+  width: fit-content;
+  margin: 300px auto;
+}
+
+.navbar ul{
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+
+.navbar ul li{
+  width: 80px;
+  height: 80px;
+  color: #333;
+  font-size: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
 
 }
