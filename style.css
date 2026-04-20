@@ -1,0 +1,15 @@
+*{
+  *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+:root{
+  --primary-color: #700000;
+  --secondary-color: black;
+  --third-color: white;
+  --square-color: rgba(255,255,255,0.5); 
+
+}
