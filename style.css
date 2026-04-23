@@ -10,7 +10,8 @@
   --primary-color:  #424242;
   --secondary-color: black;
   --third-color: white;
-  --square-color: rgba(255,255,255,0.5); 
+  --square-color: rgba(255,255,255,0.5);
+  --navbar-color: #424242;
 
 }
 
@@ -19,7 +20,20 @@
  content: '';
   position: absolute;
   top: -350px;
-  left: 50%;
+  left: 0;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: var(--square-color); ;
+  filter: blur(200px);
+  z-index: 0;
+}
+.opject1::before{
+ content: '';
+  position: absolute;
+  top: 500px;
+  left: 100%;
   transform: translateX(-50%);
   width: 800px;
   height: 800px;
@@ -29,7 +43,7 @@
   z-index: 0;
 }
 /*background_opjects*/
-/*navbar-syling*/
+/*navbar-styling*/
 .navbar{
   position: fixed;
   left: 50%;
@@ -107,3 +121,18 @@
   }
   
 }
+/*navbar-styling*/
+/*light&dark*/
+#NightAndLight{
+  margin-top: 20px;
+  float: right;
+  margin-right: 50px;
+  background: transparent;
+  border: none; 
+  cursor: pointer;
+}
+#NightAndLight .fa-lightbulb{
+  width: 20px;
+  height: 20px;
+}
+
