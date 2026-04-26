@@ -23,33 +23,22 @@ for(link of links){
 
 //Dark&Light//
 
-let dark = document.getElementById("NightAndLight")
-let islight = localStorage.getItem("theme") === "dark";
-
-if (islight) {
-  document.documentElement.style.setProperty('--primary-color', ' #424242');
-  document.documentElement.style.setProperty('--square-color', 'rgba(255,255,255,0.5)');
-
-  dark.innerHTML = `<i class="fa-regular fa-lightbulb"></i>`;
+let btn = document.getElementById("toggle")
+if(localStorage.getItem("theme")==="Light"){
+  document.body.classList.add("Light");
+  btn.innerHTML = `<i class = "fa-solid fa-lightbulb"></i>`  
 }
 
-
-dark.addEventListener("click", () => {
-  if (!islight) {
-    document.documentElement.style.setProperty('--square-color', 'rgba(255,255,255,0.5)');
-    document.documentElement.style.setProperty('--primary-color', ' #424242');
-    document.documentElement.style.setProperty('--navbar-color', ' #424242');
-    dark.innerHTML = `<i class="fa-regular fa-lightbulb"></i>`;
-     localStorage.setItem("theme", "dark");
-  } else {
-    document.documentElement.style.setProperty('--primary-color', 'rgba(255,255,255,0.5)');
-    document.documentElement.style.setProperty('--square-color', '#424242');
-    document.documentElement.style.setProperty('--navbar-color', 'rgba(255,255,255,0.5)');
-    dark.innerHTML = `<i class="fa-solid fa-lightbulb"></i>`;
-    localStorage.setItem("theme", "light");
+btn.onclick =()=>{
+  document.body.classList.toggle("Light");
+  if(document.body.classList.contains("Light")){
+    localStorage.setItem("theme","Light");
+    btn.innerHTML = `<i class = "fa-solid fa-lightbulb"></i>`  
+  }else{
+    localStorage.setItem("theme", "dark");
+    btn.innerHTML = `<i class = "fa-regular fa-lightbulb"></i>`  
   }
-  islight = !islight;
-});
+}
 
 
 

@@ -12,7 +12,12 @@
   --third-color: white;
   --square-color: rgba(255,255,255,0.5);
   --navbar-color: #424242;
+}
 
+body.Light{
+  --primary-color: rgba(255,255,255,0.5);
+  --square-color: #7d7d7d;
+  --navbar-color: rgba(255,255,255,0.5);
 }
 
 /*background_opjects*/
@@ -49,7 +54,7 @@
   left: 50%;
   bottom: 50px;
   transform: translateX(-50%);
-  background: rgba(255,255,255,0.5);
+  background: var(--square-color);
   width: fit-content;
   padding: 0 25px;
   border-radius: 30px;
@@ -68,7 +73,7 @@
 .navbar ul li{
   width: 80px;
   height: 80px;
-  color: #333;
+  color: ;
   font-size: 22px;
   display: inline-flex;
   align-items: center;
@@ -80,22 +85,21 @@
   position: absolute;
   width: 70px;
   height: 70px;
-  background: linear-gradient(#e91e63,#9c27b0);
+  background: linear-gradient(#a19d9d,#545454);
   border-radius: 50%;
   top: -35px;
   left: 160px;
-  border: 6px solid var(--primary-color);
   margin-left: 5px;
   transform: scale(1.3);
   display:flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: black;
   transition: left 0.8s;
 }
 
 #circle .fa-house {
-  font-size: 22px;
+  font-size: 25px;
 }
 
 .navbar ul li[value="2"] {
@@ -123,7 +127,7 @@
 }
 /*navbar-styling*/
 /*light&dark*/
-#NightAndLight{
+#toggle{
   margin-top: 20px;
   float: right;
   margin-right: 50px;
@@ -131,7 +135,7 @@
   border: none; 
   cursor: pointer;
 }
-#NightAndLight .fa-lightbulb{
+#toggle .fa-lightbulb{
   width: 20px;
   height: 20px;
 }
