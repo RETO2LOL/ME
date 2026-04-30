@@ -128,15 +128,58 @@ body.Light{
 /*navbar-styling*/
 /*light&dark*/
 #toggle{
-  margin-top: 20px;
-  float: right;
-  margin-right: 50px;
-  background: transparent;
+position: fixed;
+  left: 35%;
+  bottom: 55px;
+  transform: translateX(-50%);
+  width: fit-content;
+  padding: 25px 30px ;
+  border-radius: 25px;
+  background: var(--square-color);
   border: none; 
   cursor: pointer;
+  z-index: 2;
 }
 #toggle .fa-lightbulb{
   width: 20px;
   height: 20px;
+  font-size: 20px;
 }
+/*light&dark*/
+
+
+/*Header_AboutMe*/
+#MainHeader{
+  margin-top: 50px;
+  margin-bottom: 20px;
+  color: var(--square-color);
+  text-align: center;
+}
+#line{
+  margin-top: 20px;
+  margin: auto;
+  width: 1px;
+  height: 1px;
+  background-color: blue;
+  border-radius: 100%;
+  animation: slideIn forwards 1s ease-out ;
+}
+
+#MainHeader2{
+  text-align: center;
+  color: var(--square-color);
+}
+
+#MainHeader2 span{
+  color:#00008B;
+}
+@keyframes slideIn {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 50%;
+    }
+}
+
 

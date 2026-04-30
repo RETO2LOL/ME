@@ -39,6 +39,8 @@ btn.onclick =()=>{
     btn.innerHTML = `<i class = "fa-regular fa-lightbulb"></i>`  
   }
 }
+//Dark&Light//
+
 
 
 
