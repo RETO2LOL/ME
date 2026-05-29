@@ -1,3 +1,29 @@
+//dots//
+const dots = document.getElementById('dots');
+const dotCount = 200;
+
+for (let i = 0; i < dotCount; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'dot';
+  
+
+  const x = Math.random() * 300; //
+  const y = Math.random() * 300;
+  
+  dot.style.left = `${x}%`;
+  dot.style.top = `${y}%`;
+  
+  const size = Math.random() * 8 + 2; 
+  dot.style.width = `${size}px`;
+  dot.style.height = `${size}px`;
+
+  dots.appendChild(dot);
+}
+
+
+//dots//
+
+
 //navbar animation//
 
 //variables//
