@@ -1,6 +1,6 @@
 //dots//
 const dots = document.getElementById('dots');
-const dotCount = 200;
+const dotCount = 100;
 
 for (let i = 0; i < dotCount; i++) {
   const dot = document.createElement('div');
@@ -30,20 +30,29 @@ for (let i = 0; i < dotCount; i++) {
 
 let links = document.getElementsByTagName("li");
 let circle = document.getElementById("circle");
-
+let aboutME = document.getElementById("btn1");
+const social
 //functions//
+function moveNav(index, iconHTML) {
 
-for(link of links){
-  link.onclick = function nav (){
 
-    for(li of links){
-      li.style.opacity = "1"
-    }
-
-    circle.style.left = (80 * this.value) + "px";
-    circle.innerHTML = this.innerHTML;
-    this.style.opacity = "0"
+  for (let link of links) {
+    link.style.opacity = "1";
   }
+
+  circle.style.left = (80 * index) + "px";
+  circle.innerHTML = iconHTML;
+
+  links[index].style.opacity = "0";
+}
+    
+  for (let link of links) {
+  link.onclick = function () {
+    moveNav(this.value, this.innerHTML);
+  }
+}
+aboutME.onclick = function () {
+  moveNav(3, links[3].innerHTML);
 }
 //navbar animation//
 
