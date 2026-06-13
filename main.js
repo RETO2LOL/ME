@@ -31,7 +31,7 @@ for (let i = 0; i < dotCount; i++) {
 let links = document.getElementsByTagName("li");
 let circle = document.getElementById("circle");
 let aboutME = document.getElementById("btn1");
-const social
+const social = document.getElementById("nav");
 //functions//
 function moveNav(index, iconHTML) {
 
@@ -54,6 +54,25 @@ function moveNav(index, iconHTML) {
 aboutME.onclick = function () {
   moveNav(3, links[3].innerHTML);
 }
+
+const observer = new IntersectionObserver((entries) => {
+
+  entries.forEach(entry => {
+
+    if(entry.isIntersecting){
+      moveNav(2, links[2].innerHTML);
+    } else {
+      moveNav(3, links[3].innerHTML);
+    }
+
+  });
+
+}, {
+  threshold: 0
+});
+
+observer.observe(social);
+
 //navbar animation//
 
 //Dark&Light//
