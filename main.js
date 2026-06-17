@@ -30,8 +30,9 @@ for (let i = 0; i < dotCount; i++) {
 
 let links = document.getElementsByTagName("li");
 let circle = document.getElementById("circle");
-let aboutME = document.getElementById("btn1");
-const social = document.getElementById("nav");
+let section1 = document.getElementById("btn1");
+let section2 = document.getElementById("cardText")
+let section3 = document.getElementById("transfer")
 //functions//
 function moveNav(index, iconHTML) {
 
@@ -51,27 +52,33 @@ function moveNav(index, iconHTML) {
     moveNav(this.value, this.innerHTML);
   }
 }
-aboutME.onclick = function () {
+  section1.onclick = function () {
   moveNav(3, links[3].innerHTML);
 }
 
 const observer = new IntersectionObserver((entries) => {
 
   entries.forEach(entry => {
+    if(!entry.isIntersecting){
+      return;
+    } 
 
-    if(entry.isIntersecting){
+    if(entry.target.id === "btn1" ){
       moveNav(2, links[2].innerHTML);
-    } else {
-      moveNav(3, links[3].innerHTML);
+    }
+
+    if(entry.target.id === "cardText"){
+      moveNav(3, links[3].innerHTML)
     }
 
   });
 
 }, {
-  threshold: 0
+  threshold: 1
 });
 
-observer.observe(social);
+observer.observe(section1);
+observer.observe(section2);
 
 //navbar animation//
 
@@ -95,27 +102,4 @@ btn.onclick =()=>{
 }
 //Dark&Light//
 
-//card edit//
-const cards = document.querySelectorAll('.card');
-const container = document.querySelector('.cards');
 
-container.addEventListener('mousemove', (e) => {
-  let rect = container.getBoundingClientRect();
-  let x = e.clientX - rect.left;
-  let y = e.clientY - rect.top;
-  
-  let rotateX = -(y - rect.height / 2) / 10;
-  let rotateY = (x - rect.width / 2) / 10;
-  
-  cards.forEach(card => {
-    card.style.setProperty('--rotateX', `${rotateX}deg`);
-    card.style.setProperty('--rotateY', `${rotateY}deg`);
-  });
-});
-
-container.addEventListener('mouseleave', () => {
-  cards.forEach(card => {
-    card.style.setProperty('--rotateX', `0deg`);
-    card.style.setProperty('--rotateY', `0deg`);
-  });
-});
