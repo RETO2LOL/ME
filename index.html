@@ -1,84 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link href="style.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AionSeeker.dev - Personal Portfolio">
     <title>AionSeeker.dev Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <script src="main.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ec1fea3f7e.js" crossorigin="anonymous"></script>
+    <script src="main.js" defer></script>
   </head>
   <body style="background-color: var(--primary-color);">
-  <!--style-->
-  <div id="dots" ></div>
+  <!-- Background elements -->
+  <div id="dots"></div>
   <div class="object"></div>
   <div class="object1"></div>
   <div class="object2"></div>
 
-  <!--style-->
-  <!--LightAndDark-->
-    
-    
-    <button id="toggle">
-      <i class="fa-solid fa-lightbulb"></i>
-    </button>
-  <!--Header--> 
-        <h1 id="MainHeader">Hi there, Welcome To My Portfolio</h1>
-        <div id="line"></div>
-    <br> 
-        <h1 class="MainHeader2"><span>I'm</span> AionSeeker.dev</h1>
-        <p class="text" >I build modern fast and responsive websites
-          <br>
-          with clean code and great user experience.
-        </p>
-        <div class="btn" >
-       <a href="#nav" ><button value="3" id="btn1">About me<i class="fa-solid fa-circle-user"></i></button></a>
-          <button id="btn2">View my work <i class="fa-solid fa-arrow-right-long"></i></button>
-        </div>
-  <!--Header-->
+  <!-- Light/Dark Toggle -->
+  <button id="toggle" aria-label="Toggle dark mode">
+    <i class="fa-solid fa-lightbulb"></i>
+  </button>
+  
+  <!-- Header -->
+  <header>
+    <h1 id="MainHeader">Hi there, Welcome To My Portfolio</h1>
+    <div id="line"></div>
+    <br>
+    <h1 class="MainHeader2"><span>I'm</span> AionSeeker.dev</h1>
+    <p class="text">I build modern fast and responsive websites
+      <br>
+      with clean code and great user experience.
+    </p>
+    <div class="btn">
+      <a href="#nav"><button value="3" id="btn1">About me<i class="fa-solid fa-circle-user"></i></button></a>
+      <button id="btn2">View my work <i class="fa-solid fa-arrow-right-long"></i></button>
+    </div>
+  </header>
+  
   <div id="line1"></div>
-    
-<!--MyProjects-->
+  
+  <!-- My Projects -->
+  <section id="projects">
     <h1 class="MainHeader3">My Projects</h1>
     <div class="cards">
       <div class="card">
-        <div class="card-con" >
+        <div class="card-con">
           <i class="fa-solid fa-ban"></i>
           <span id="cardText">For future Projects</span>
         </div>
       </div>
       <div class="card">
-        <div class="card-con" >
+        <div class="card-con">
           <i class="fa-solid fa-ban"></i>
           <span id="cardText">For future Projects</span>
         </div>
       </div>
       <div class="card">
-          <div class="card-con" >
-           <i class="fa-solid fa-ban"></i>
-           <span id="cardText">For future Projects</span>
-          </div>
+        <div class="card-con">
+          <i class="fa-solid fa-ban"></i>
+          <span id="cardText">For future Projects</span>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!--type-test-->
-      <div id="line1"></div>
-      <h1 class="MainHeader4">Want to test your typing speed</h1>
-      <div id="transfer" ></div>
-  <!--navbar-->
-    <footer> 
-   <div class="navbar"> 
-    <ul>
-      <li value="0"><i class="fa-regular fa-house"></i></li>
-      <a href="#transfer"> <li value="1"><i class="fa-regular fa-file-code"></i></li> </a>
-      <a href="#"><li value="2"><i class="fa-regular fa-house"></i></li></a>
-      <a href="#nav" > <li value="3"><i class="fa-regular fa-circle-user"></i></li></a>
-      <a href=""> <li value="4"><i class="fa-regular fa-envelope"></i></li> </a>
-      <div id="circle"><i class="fa-regular fa-house"></i></div>
+  <!-- Typing Test -->
+  <div id="line1"></div>
+  <section id="typing-test">
+    <h1 class="MainHeader4">Want to test your typing speed</h1>
+    <div id="transfer"></div>
+    <div class="textHolder">
+      <p id="timeHolder">You have <span id="time">60</span> sec left</p>
+      <br>
+      <p id="text">i got to make a very long time to see a new programing</p>
+    </div>
+  </section>
+  
+  <!-- Navbar -->
+  <footer id="nav">
+    <div class="navbar">
+      <ul>
+        <li value="0"><i class="fa-regular fa-house"></i></li>
+        <a href="#transfer"><li value="1"><i class="fa-regular fa-file-code"></i></li></a>
+        <a href="#"><li value="2"><i class="fa-regular fa-house"></i></li></a>
+        <a href="#nav"><li value="3"><i class="fa-regular fa-circle-user"></i></li></a>
+        <a href=""><li value="4"><i class="fa-regular fa-envelope"></i></li></a>
+        <div id="circle"><i class="fa-regular fa-house"></i></div>
       </ul>
-   </div> 
+    </div>
   </footer>
-
-  </body>
+</body>
 </html>
