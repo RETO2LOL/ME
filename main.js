@@ -98,3 +98,7 @@ btn.onclick = () => {
     btn.innerHTML = `<i class="fa-regular fa-lightbulb"></i>`;
   }
 }
+
+// speed test
+  
+
