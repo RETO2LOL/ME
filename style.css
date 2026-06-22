@@ -324,36 +324,4 @@ body.Light {
   color: transparent;
 }
 
-/* Speed test */
-.textHolder {
-  margin-top: 100px;
-  justify-content: center;
-  text-align: center;
-  margin-bottom: 1000px;
-}
 
-#text {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 16px;
-  text-align: center;
-  color: var(--typeing-color);
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: grayscale;
-  font-smooth: never;
-  font-synthesis-weight: none;
-  z-index: -1;
-}
-
-#timeHolder {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 16px;
-  text-align: center;
-  justify-content: center;
-  background-image: linear-gradient(to right, var(--text-color), var(--text-color2));
-  background-clip: text;
-  color: transparent;
-}
-
-#typeholder{
-  height: 60px;
-}

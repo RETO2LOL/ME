@@ -26,31 +26,25 @@ let links = document.getElementsByTagName("li");
 let circle = document.getElementById("circle");
 let section1 = document.getElementById("btn1");
 let section2 = document.getElementById("cardText");
-let section3 = document.getElementById("transfer");
+let section3 = document.getElementById("typeholder");
 
 // Functions
 function moveNav(index, iconHTML) {
-  // Reset all links to visible
   for (let link of links) {
     link.style.opacity = "1";
   }
 
-  // Move circle to selected link
   circle.style.left = (80 * index) + "px";
   circle.innerHTML = iconHTML;
 
-  // Hide the current link
   links[index].style.opacity = "0";
 }
-
-// Add click event listeners to all links
 for (let link of links) {
   link.onclick = function () {
     moveNav(this.value, this.innerHTML);
   }
 }
 
-// Add click event listener to section1 button
 section1.onclick = function () {
   moveNav(3, links[3].innerHTML);
 }
@@ -69,6 +63,10 @@ const observer = new IntersectionObserver((entries) => {
     if (entry.target.id === "cardText") {
       moveNav(3, links[3].innerHTML);
     }
+
+    if (entry.target.id === "typeholder") {
+      moveNav(1, links[1].innerHTML);
+    }
   });
 }, {
   threshold: 0.5
@@ -76,17 +74,16 @@ const observer = new IntersectionObserver((entries) => {
 
 observer.observe(section1);
 observer.observe(section2);
+observer.observe(section3);
 
 // Dark & Light mode toggle
 let btn = document.getElementById("toggle");
 
-// Check for saved theme preference or default to dark
 if (localStorage.getItem("theme") === "Light") {
   document.body.classList.add("Light");
   btn.innerHTML = `<i class="fa-solid fa-lightbulb"></i>`;
 }
 
-// Toggle theme on button click
 btn.onclick = () => {
   document.body.classList.toggle("Light");
   
@@ -99,6 +96,4 @@ btn.onclick = () => {
   }
 }
 
-// speed test
-  
 
