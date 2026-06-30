@@ -78,6 +78,7 @@ const observer = new IntersectionObserver(
       }
       if (ShouldRunCondtion && entry.target.id === "Skills") {
         moveNav(1, links[1].innerHTML);
+        SkillPrecentage();
       }
     });
   },
@@ -116,14 +117,15 @@ const bar = document.querySelector(".presentage");
 const barText = document.querySelector(".SkillPrecentage");
 let valueText = 0;
 let value = 0;
+function SkillPrecentage() {
+  const interval = setInterval(() => {
+    value += 7.5;
+    valueText++;
+    barText.innerHTML = `<p>${valueText}%</p>`;
+    bar.style.width = `${value}px`;
 
-const interval = setInterval(() => {
-  value += 7.5;
-  valueText++;
-  barText.innerHTML = `<p>${valueText}%</p>`;
-  bar.style.width = `${value}px`;
-
-  if (value >= 600 && valueText >= 80) {
-    clearInterval(interval);
-  }
-}, 15);
+    if (value >= 600 && valueText >= 80) {
+      clearInterval(interval);
+    }
+  }, 20);
+}
