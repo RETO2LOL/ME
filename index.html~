@@ -87,10 +87,9 @@
     <h1 class="MainHeader3">My Skills</h1>
     <section id="Skills">
       <p class="SkillName">HTML</p>
-      <div id="presentageHolder">
-        <div class="presentage"></div>
-      </div>
-      <p class="SkillPrecentage">0%</p>
+      <div id="presentageHolder"></div>
+      <div id="presentage"></div>
+      <p class="Skillprecentage">0%</p>
     </section>
     <!-- Navbar -->
     <footer id="nav">
