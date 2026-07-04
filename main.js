@@ -79,6 +79,8 @@ const observer = new IntersectionObserver(
       if (ShouldRunCondtion && entry.target.id === "Skills") {
         moveNav(1, links[1].innerHTML);
         SkillPrecentage();
+        JsSkillPrecentage();
+        CssSkillPrecentage();
       }
     });
   },
@@ -119,13 +121,53 @@ let valueText = 0;
 let value = 0;
 function SkillPrecentage() {
   const interval = setInterval(() => {
+    if (value >= 650 && valueText >= 85) {
+      return;
+    }
+
     value += 7.5;
     valueText++;
     barText.innerHTML = `<p>${valueText}%</p>`;
     bar.style.width = `${value}px`;
 
+    if (value >= 650 && valueText >= 85) {
+      clearInterval(interval);
+    }
+  }, 30);
+}
+const JSbar = document.querySelector(".JSpresentage");
+const JSbarText = document.querySelector(".JsSkillPrecentage");
+function JsSkillPrecentage() {
+  const interval = setInterval(() => {
+    if (value >= 500 && valueText >= 70) {
+      return;
+    }
+
+    value += 7.5;
+    valueText++;
+    JSbarText.innerHTML = `<p>${valueText}%</p>`;
+    JSbar.style.width = `${value}px`;
+
+    if (value >= 500 && valueText >= 70) {
+      clearInterval(interval);
+    }
+  }, 30);
+}
+const CSSbar = document.querySelector(".CSSpresentage");
+const CSSbarText = document.querySelector(".CssSkillPrecentage");
+function CssSkillPrecentage() {
+  const interval = setInterval(() => {
+    if (value >= 600 && valueText >= 80) {
+      return;
+    }
+
+    value += 7.5;
+    valueText++;
+    CSSbarText.innerHTML = `<p>${valueText}%</p>`;
+    CSSbar.style.width = `${value}px`;
+
     if (value >= 600 && valueText >= 80) {
       clearInterval(interval);
     }
-  }, 20);
+  }, 30);
 }
