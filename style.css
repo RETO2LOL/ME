@@ -125,6 +125,7 @@ body.Light {
   width: 70px;
   height: 70px;
   background: linear-gradient(to right, var(--text-color), var(--text-color2));
+  backdrop-filter: blur(20px);
   border-radius: 50%;
   top: -35px;
   left: 160px;
@@ -333,6 +334,16 @@ body.Light {
   );
   background-clip: text;
   color: transparent;
+}
+.description {
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 850px;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: left;
+  color: var(--text-color2);
 }
 
 /*skills*/
