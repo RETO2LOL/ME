@@ -18,7 +18,7 @@ html {
   --third-color: white;
   --square-color: rgba(53, 109, 242, 0.6);
   --navbar-color: #424242;
-  --typeing-color: rgba(3, 89, 237, 0.5);
+  --transparent-white: rgba(255, 255, 255, 0.1);
 }
 body {
   background-color: var(--primary-color);
@@ -442,4 +442,49 @@ body.Light {
 
 #Skills {
   margin-bottom: 2000px;
+}
+
+/*about me*/
+
+.AboutMeCard {
+  margin-left: 50px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: solid 1px var(--text-color);
+  background-color: var(--transparent-white);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  width: 30vw;
+  height: 70vh;
+}
+
+.AboutMeImage {
+  margin-top: 50px;
+  height: 200px;
+  width: 200px;
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid var(--text-color2);
+}
+.AboutMeDiscription {
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  color: var(--text-color2);
+}
+.AboutMeMainHeader {
+  font-family: "Inter", sans-serif;
+  font-size: 3em;
+  margin-bottom: 30px;
+  text-align: center;
+  background-image: linear-gradient(
+    to right,
+    var(--text-color),
+    var(--text-color2)
+  );
+  background-clip: text;
+  color: transparent;
 }
