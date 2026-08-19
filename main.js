@@ -26,7 +26,7 @@ let links = document.getElementsByTagName("li");
 let circle = document.getElementById("circle");
 let section1 = document.getElementById("btn1");
 let section2 = document.getElementById("cardText");
-let section3 = document.getElementById("Skills");
+let section3 = document.getElementById("AboutMeNavigation");
 let ShouldRunCondtion = true;
 let triggerd = false;
 
@@ -76,7 +76,7 @@ const observer = new IntersectionObserver(
       if (ShouldRunCondtion && entry.target.id === "cardText") {
         moveNav(3, links[3].innerHTML);
       }
-      if (ShouldRunCondtion && entry.target.id === "Skills") {
+      if (ShouldRunCondtion && entry.target.id === "AboutMeNavigation") {
         moveNav(1, links[1].innerHTML);
         SkillPrecentage();
         JsSkillPrecentage();
