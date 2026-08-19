@@ -488,3 +488,17 @@ body.Light {
   background-clip: text;
   color: transparent;
 }
+
+.AboutMeHeader{
+font-family: "Inter", sans-serif;
+  font-size: 1em;
+  margin-top: 100px;
+  text-align: center;
+  background-image: linear-gradient(
+    to right,
+    var(--text-color),
+    var(--text-color2)
+  );
+  background-clip: text;
+  color: transparent;
+}
