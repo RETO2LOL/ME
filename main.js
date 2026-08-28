@@ -25,7 +25,7 @@ for (let i = 0; i < dotCount; i++) {
 let links = document.getElementsByTagName("li");
 let circle = document.getElementById("circle");
 let section1 = document.getElementById("btn1");
-let section2 = document.getElementById("cardText");
+let section2 = document.querySelector(".cardText");
 let section3 = document.getElementById("AboutMeNavigation");
 let ShouldRunCondtion = true;
 let triggerd = false;
@@ -73,7 +73,7 @@ const observer = new IntersectionObserver(
         moveNav(2, links[2].innerHTML);
       }
 
-      if (ShouldRunCondtion && entry.target.id === "cardText") {
+      if (ShouldRunCondtion && entry.target.classList.contains("cardText")) {
         moveNav(3, links[3].innerHTML);
       }
       if (ShouldRunCondtion && entry.target.id === "AboutMeNavigation") {
@@ -113,61 +113,34 @@ btn.onclick = () => {
   }
 };
 
-//presentageBar
+// Skill percentage bar animations
+function animateSkillBar(bar, textEl, targetPercent) {
+  let current = 0;
+  const interval = setInterval(() => {
+    if (current >= targetPercent) {
+      clearInterval(interval);
+      return;
+    }
+
+    current++;
+    bar.style.width = `${current}%`;
+    textEl.innerHTML = `<p>${current}%</p>`;
+  }, 30);
+}
 
 const bar = document.querySelector(".presentage");
 const barText = document.querySelector(".SkillPrecentage");
-let valueText = 0;
-let value = 0;
-function SkillPrecentage() {
-  const interval = setInterval(() => {
-    if (value >= 650 && valueText >= 85) {
-      return;
-    }
-
-    value += 7.5;
-    valueText++;
-    barText.innerHTML = `<p>${valueText}%</p>`;
-    bar.style.width = `${value}px`;
-
-    if (value >= 650 && valueText >= 85) {
-      clearInterval(interval);
-    }
-  }, 30);
-}
 const JSbar = document.querySelector(".JSpresentage");
 const JSbarText = document.querySelector(".JsSkillPrecentage");
-function JsSkillPrecentage() {
-  const interval = setInterval(() => {
-    if (value >= 500 && valueText >= 70) {
-      return;
-    }
-
-    value += 7.5;
-    valueText++;
-    JSbarText.innerHTML = `<p>${valueText}%</p>`;
-    JSbar.style.width = `${value}px`;
-
-    if (value >= 500 && valueText >= 70) {
-      clearInterval(interval);
-    }
-  }, 30);
-}
 const CSSbar = document.querySelector(".CSSpresentage");
 const CSSbarText = document.querySelector(".CssSkillPrecentage");
+
+function SkillPrecentage() {
+  animateSkillBar(bar, barText, 85);
+}
+function JsSkillPrecentage() {
+  animateSkillBar(JSbar, JSbarText, 70);
+}
 function CssSkillPrecentage() {
-  const interval = setInterval(() => {
-    if (value >= 600 && valueText >= 80) {
-      return;
-    }
-
-    value += 7.5;
-    valueText++;
-    CSSbarText.innerHTML = `<p>${valueText}%</p>`;
-    CSSbar.style.width = `${value}px`;
-
-    if (value >= 600 && valueText >= 80) {
-      clearInterval(interval);
-    }
-  }, 30);
+  animateSkillBar(CSSbar, CSSbarText, 80);
 }
