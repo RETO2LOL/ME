@@ -1,0 +1,10 @@
+name = "contact-form"
+main = "index.js"
+compatibility_date = "2024-09-01"
+
+# Secrets to set via CLI:
+#   wrangler secret put RECAPTCHA_SECRET
+#   wrangler secret put RESEND_API_KEY
+#   wrangler secret put ALLOWED_ORIGIN
+#   wrangler secret put TO_EMAIL          (optional - falls back to ammar in code)
+#   wrangler secret put FROM_EMAIL        (optional - falls back to onboarding@resend.dev)

@@ -20,6 +20,7 @@
       src="https://kit.fontawesome.com/ec1fea3f7e.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lejwp0tAAAAADsvhe3qxuCBg5FT61je8Bj5Chrl"></script>
     <script src="main.js" defer></script>
   </head>
   <body>
@@ -46,8 +47,8 @@
         with clean code and great user experience.
       </p>
       <div class="btn">
-        <a href="#card"
-          ><button value="3" id="btn1">
+        <a href="#about"
+          ><button value="1" id="btn1">
             About me<i class="fa-solid fa-circle-user"></i></button
         ></a>
         <button id="btn2">
@@ -86,7 +87,7 @@
     <div class="line1"></div>
     <h1 class="AboutMeHeader">About me</h1>
     <div class="about-skills-row">
-      <div class="AboutMeCard">
+      <div class="AboutMeCard" id="about">
         <div class="AboutMeImage"><i class="fa-solid fa-circle-user"></i></div>
         <div id="AboutMeNavigation"></div>
         <!-- marker for bar navigation -->
@@ -118,23 +119,45 @@
         </div>
       </section>
     </div>
+    <!--constact me section-->
+    <div class="line1"></div>
+    <section id="contact">
+      <h1 class="MainHeader3">Contact me</h1>
+      <div class="contactCard">
+        <div id="contactNavigation"></div>
+        <!-- marker for bar navigation -->
+        <p class="contactBlurb">
+          Have a project in mind or just want to say hi? Drop a message below.
+        </p>
+        <form id="contactForm" class="contactForm" novalidate>
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Your email" required />
+          <textarea
+            name="message"
+            placeholder="Your message"
+            rows="5"
+            required
+          ></textarea>
+          <button type="submit" class="contactSubmit">
+            Send message <i class="fa-solid fa-paper-plane"></i>
+          </button>
+          <p id="contactError" class="contactError" hidden></p>
+        </form>
+        <div id="contactThanks" class="contactThanks" hidden>
+          <i class="fa-solid fa-circle-check"></i>
+          <p>Thanks — I'll be in touch.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Navbar -->
     <footer id="nav">
       <div class="navbar">
         <ul>
           <li value="0"><i class="fa-regular fa-house"></i></li>
-          <a href="#Skills"
-            ><li value="1"><i class="fa-regular fa-circle-user"></i></li
-          ></a>
-          <a href="#"
-            ><li value="2"><i class="fa-regular fa-house"></i></li
-          ></a>
-          <a href="#projects"
-            ><li value="3"><i class="fa-regular fa-file-code"></i></li
-          ></a>
-          <a href=""
-            ><li value="4"><i class="fa-regular fa-envelope"></i></li
-          ></a>
+          <li value="1"><a href="#about"><i class="fa-regular fa-circle-user"></i></a></li>
+          <li value="2"><a href="#projects"><i class="fa-regular fa-file-code"></i></a></li>
+          <li value="3"><a href="#contact"><i class="fa-regular fa-envelope"></i></a></li>
           <div id="circle"><i class="fa-regular fa-house"></i></div>
         </ul>
       </div>
