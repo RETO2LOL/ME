@@ -1,0 +1,6 @@
+/* Reset for the React tree only — scoped to the mount roots so we don't
+   disturb the host page's own styles. The host already has its own reset. */
+#hero-root,
+#footer-root {
+  /* nothing here yet — keep the widget transparent to host layout */
+}

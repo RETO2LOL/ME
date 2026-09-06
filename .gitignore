@@ -2,3 +2,4 @@
 cloude/
 worker/.wrangler/
 worker/node_modules/
+my-react-widget/node_modules/

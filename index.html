@@ -21,7 +21,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://www.google.com/recaptcha/api.js?render=6Lejwp0tAAAAADsvhe3qxuCBg5FT61je8Bj5Chrl"></script>
-    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="my-react-widget/dist/assets/react-widget.css" />
   </head>
   <body>
     <!-- Background elements -->
@@ -35,26 +35,9 @@
       <i class="fa-solid fa-lightbulb"></i>
     </button>
 
-    <!-- Header -->
+    <!-- Header (React widget mounts here) -->
     <header>
-      <h1 id="MainHeader">Hi there, Welcome To My Portfolio</h1>
-      <div id="line"></div>
-      <br />
-      <h1 class="MainHeader2"><span>I'm</span> AionSeeker.dev</h1>
-      <p class="text">
-        I build modern fast and responsive websites
-        <br />
-        with clean code and great user experience.
-      </p>
-      <div class="btn">
-        <a href="#about"
-          ><button value="1" id="btn1">
-            About me<i class="fa-solid fa-circle-user"></i></button
-        ></a>
-        <button id="btn2">
-          View my work <i class="fa-solid fa-arrow-right-long"></i>
-        </button>
-      </div>
+      <div id="hero-root"></div>
     </header>
 
     <div class="line1"></div>
@@ -150,11 +133,14 @@
       </div>
     </section>
 
+    <!-- Footer (React widget mounts here) -->
+    <div id="footer-root"></div>
+
     <!-- Navbar -->
     <footer id="nav">
       <div class="navbar">
         <ul>
-          <li value="0"><i class="fa-regular fa-house"></i></li>
+          <li value="0"><a href="#"><i class="fa-regular fa-house"></i></a></li>
           <li value="1"><a href="#about"><i class="fa-regular fa-circle-user"></i></a></li>
           <li value="2"><a href="#projects"><i class="fa-regular fa-file-code"></i></a></li>
           <li value="3"><a href="#contact"><i class="fa-regular fa-envelope"></i></a></li>
@@ -162,5 +148,24 @@
         </ul>
       </div>
     </footer>
+
+    <!-- React widget bundle + mount. main.js runs after so it sees
+         id="btn1" rendered by the React hero. -->
+    <script src="my-react-widget/dist/assets/react-widget.js"></script>
+    <script>
+      // No DOMContentLoaded wrapper: this script runs synchronously after
+      // the React bundle above (which is non-defer and defines
+      // window.renderMyReactWidget). Mounting now means id="btn1" exists
+      // in the DOM before main.js (defer) runs.
+      var heroEl = document.getElementById("hero-root");
+      var footerEl = document.getElementById("footer-root");
+      if (heroEl) {
+        window.renderMyReactWidget("hero-root", { section: "hero" });
+      }
+      if (footerEl) {
+        window.renderMyReactWidget("footer-root", { section: "footer" });
+      }
+    </script>
+    <script src="main.js" defer></script>
   </body>
 </html>

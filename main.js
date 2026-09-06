@@ -24,7 +24,7 @@ for (let i = 0; i < dotCount; i++) {
 // Variables
 let links = document.getElementsByTagName("li");
 let circle = document.getElementById("circle");
-let section1 = document.getElementById("btn1");
+let section1 = document.getElementById("hero-root");
 let section2 = document.querySelector(".cardText");
 let section3 = document.getElementById("AboutMeNavigation");
 let section4 = document.getElementById("contactNavigation");
@@ -70,7 +70,7 @@ const observer = new IntersectionObserver(
         return;
       }
 
-      if (ShouldRunCondtion && entry.target.id === "btn1") {
+      if (ShouldRunCondtion && entry.target.id === "hero-root") {
         moveNav(0, links[0].innerHTML);
       }
 

@@ -1,0 +1,88 @@
+/* Hero section — mirrors the static header that used to live in index.html
+   (selectors .MainHeader2, .text, .btn, #btn1, #btn2). Scoped to .HeroSection
+   so the host page's identical selectors keep their own rules. */
+
+.HeroSection {
+  font-family: "Inter", sans-serif;
+  text-align: center;
+}
+
+.HeroSection .MainHeader2 {
+  font-family: "Inter", sans-serif;
+  font-size: 5em;
+  margin-top: 7%;
+  text-align: center;
+  background-image: linear-gradient(to right, #61ddfd, #0359ed);
+  background-clip: text;
+  color: transparent;
+}
+
+.HeroSection .MainHeader2 span {
+  color: white;
+}
+
+.HeroSection .text {
+  margin-top: 30px;
+  font-size: 1.5em;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+.HeroSection .btn {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  font-family: "Inter", sans-serif;
+}
+
+.HeroSection #btn1 {
+  padding: 20px 30px;
+  background-image: linear-gradient(to right, #61ddfd, #0359ed);
+  border-radius: 20px;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  color: black;
+}
+
+.HeroSection #btn1 i {
+  margin-left: 15px;
+  font-size: 1.3em;
+}
+
+.HeroSection #btn2 {
+  font-family: "Inter", sans-serif;
+  padding: 20px 30px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  font-size: 1em;
+  cursor: pointer;
+  color: white;
+}
+
+/* Footer section — placeholder. Filled in later. */
+.FooterSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px 120px; /* extra bottom padding to clear the fixed navbar */
+  min-height: 120px;
+  font-family: "Inter", sans-serif;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.FooterSection .footer-placeholder {
+  width: 100%;
+  max-width: 840px;
+  min-height: 80px;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
