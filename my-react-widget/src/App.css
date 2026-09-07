@@ -40,13 +40,13 @@
 
 .HeroSection #btn1 {
   padding: 20px 30px;
-  background-image: linear-gradient(to right, #61ddfd, #0359ed);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 1em;
   cursor: pointer;
   font-family: "Inter", sans-serif;
-  color: black;
+  color: white;
 }
 
 .HeroSection #btn1 i {

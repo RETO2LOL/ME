@@ -1,5 +1,5 @@
 import './App.css';
-
+import { AnimatedIcon } from './components/HeaderAnimation';
 // Scrolls to a hash target inside the host page. Falls back to setting
 // location.hash so native anchor behaviour kicks in if smooth scroll fails.
 function scrollToHash(hash) {
@@ -16,12 +16,7 @@ function HeroSection() {
   return (
     <div className="HeroSection">
       <br />
-      <h1 className="MainHeader2"><span>I'm</span> AionSeeker.dev</h1>
-      <p className="text">
-        I build modern fast and responsive websites
-        <br />
-        with clean code and great user experience.
-      </p>
+      <AnimatedIcon />
       <div className="btn">
         <a
           href="#about"

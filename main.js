@@ -13,7 +13,7 @@ for (let i = 0; i < dotCount; i++) {
   dot.style.left = `${x}%`;
   dot.style.top = `${y}%`;
 
-  const size = Math.random() * 8 + 2;
+  const size = Math.random() * 4 + 2;
   dot.style.width = `${size}px`;
   dot.style.height = `${size}px`;
 
