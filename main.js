@@ -75,13 +75,10 @@ const observer = new IntersectionObserver(
       }
 
       if (ShouldRunCondtion && entry.target.classList.contains("cardText")) {
-        moveNav(2, links[2].innerHTML);
+        moveNav(1, links[1].innerHTML);
       }
       if (ShouldRunCondtion && entry.target.id === "AboutMeNavigation") {
-        moveNav(1, links[1].innerHTML);
-        SkillPrecentage();
-        JsSkillPrecentage();
-        CssSkillPrecentage();
+        moveNav(2, links[2].innerHTML);
       }
       if (ShouldRunCondtion && entry.target.id === "contactNavigation") {
         moveNav(3, links[3].innerHTML);
@@ -118,37 +115,6 @@ btn.onclick = () => {
   }
 };
 
-// Skill percentage bar animations
-function animateSkillBar(bar, textEl, targetPercent) {
-  let current = 0;
-  const interval = setInterval(() => {
-    if (current >= targetPercent) {
-      clearInterval(interval);
-      return;
-    }
-
-    current++;
-    bar.style.width = `${current}%`;
-    textEl.innerHTML = `<p>${current}%</p>`;
-  }, 30);
-}
-
-const bar = document.querySelector(".presentage");
-const barText = document.querySelector(".SkillPrecentage");
-const JSbar = document.querySelector(".JSpresentage");
-const JSbarText = document.querySelector(".JsSkillPrecentage");
-const CSSbar = document.querySelector(".CSSpresentage");
-const CSSbarText = document.querySelector(".CssSkillPrecentage");
-
-function SkillPrecentage() {
-  animateSkillBar(bar, barText, 85);
-}
-function JsSkillPrecentage() {
-  animateSkillBar(JSbar, JSbarText, 70);
-}
-function CssSkillPrecentage() {
-  animateSkillBar(CSSbar, CSSbarText, 80);
-}
 
 // Contact form submit — gets a reCAPTCHA v3 token, posts to the Cloudflare Worker,
 // then shows the inline thank-you (or error) state. No page redirect.
