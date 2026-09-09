@@ -553,15 +553,59 @@ body.Light .dot {
   font-family: "Inter", sans-serif;
 }
 
-.contactThanks i {
-  font-size: 3.5em;
-  background-image: linear-gradient(
-    to right,
-    var(--text-color),
-    var(--text-color2)
-  );
-  background-clip: text;
-  color: transparent;
+.contactSuccessIcon {
+  width: 82px;
+  height: 82px;
+  overflow: visible;
+  animation: contactSuccessPop 0.35s ease-out both;
+}
+
+.contactSuccessCircle,
+.contactSuccessCheck {
+  fill: none;
+  stroke: var(--text-color);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contactSuccessCircle {
+  stroke-width: 3;
+  stroke-dasharray: 246;
+  stroke-dashoffset: 246;
+  animation: contactSuccessDraw 0.55s ease-out 0.1s forwards;
+}
+
+.contactSuccessCheck {
+  stroke-width: 5;
+  stroke-dasharray: 62;
+  stroke-dashoffset: 62;
+  animation: contactSuccessDraw 0.35s ease-out 0.58s forwards;
+}
+
+@keyframes contactSuccessPop {
+  from {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes contactSuccessDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contactSuccessIcon,
+  .contactSuccessCircle,
+  .contactSuccessCheck {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
 }
 
 .contactThanks p {
