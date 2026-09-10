@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="AionSeeker.dev - Personal Portfolio" />
     <title>AionSeeker.dev Portfolio</title>
+    <script>
+      // Hide before the first paint; keep content accessible if main.js fails.
+      if ("IntersectionObserver" in window) {
+        document.documentElement.classList.add("reveal-enabled");
+        document.addEventListener("DOMContentLoaded", function () {
+          if (!document.documentElement.classList.contains("reveal-ready")) {
+            document.documentElement.classList.remove("reveal-enabled");
+          }
+        }, { once: true });
+      }
+    </script>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,21 +36,18 @@
   </head>
   <body>
     <!-- Background elements -->
-    <div id="dots"></div>
-    <!-- Light/Dark Toggle -->
-    <button id="toggle" aria-label="Toggle dark mode">
-      <i class="fa-solid fa-lightbulb"></i>
-    </button>
+    <div id="dots" aria-hidden="true"></div>
 
     <!-- Header (React widget mounts here) -->
-    <header>
+    <header id="home" data-nav-section data-reveal>
       <div id="hero-root"></div>
     </header>
 
     <div class="line1"></div>
 
     <!-- My Projects -->
-    <section id="projects">
+
+    <section id="projects" data-nav-section data-reveal>
       <h1 class="MainHeader3">My Projects</h1>
       <div class="cards">
         <div class="card">
@@ -63,26 +71,24 @@
       </div>
     </section>
     <!-- About Me & Skills -->
-    <div id="AboutMeNavigation"></div>
     <div class="line1"></div>
-    <h1 class="AboutMeHeader">About me</h1>
-    <div class="about-skills-row">
-      <div class="AboutMeCard" id="about">
-        <div class="AboutMeImage"><i class="fa-solid fa-circle-user"></i></div>
-        <!-- marker for bar navigation -->
-        <h1 class="AboutMeMainHeader">Ammar Yasser</h1>
-        <p class="AboutMeDiscription">software dev</p>
+    <section id="about" data-nav-section data-reveal>
+      <h1 class="AboutMeHeader" id="AboutMeNavigation">About me</h1>
+      <div class="about-skills-row">
+        <div class="AboutMeCard">
+          <div class="AboutMeImage"><i class="fa-solid fa-circle-user"></i></div>
+          <h1 class="AboutMeMainHeader">Ammar Yasser</h1>
+          <p class="AboutMeDiscription">software dev</p>
+        </div>
+        <section id="Skills">
+        </section>
       </div>
-      <section id="Skills">
-       </section>
-    </div>
+    </section>
     <!--constact me section-->
     <div class="line1"></div>
-    <section id="contact">
+    <section id="contact" data-nav-section data-reveal>
       <h1 class="MainHeader3">Contact me</h1>
       <div class="contactCard">
-        <div id="contactNavigation"></div>
-        <!-- marker for bar navigation -->
         <p class="contactBlurb">
           Have a project in mind or just want to say hi? Drop a message below.
         </p>
@@ -116,24 +122,23 @@
     <!-- Navbar -->
     <footer id="nav">
       <div class="navbar">
+        <button id="toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
+          <i class="fa-regular fa-lightbulb" aria-hidden="true"></i>
+        </button>
         <ul>
-          <li value="0"><a href="#"><i class="fa-regular fa-house"></i></a></li>
-          <li value="1"><a href="#projects"><i class="fa-regular fa-circle-user"></i></a></li>
-          <li value="2"><a href="#AboutMeNavigation"><i class="fa-regular fa-file-code"></i></a></li>
-          <li value="3"><a href="#contact"><i class="fa-regular fa-envelope"></i></a></li>
-          <div id="circle"><i class="fa-regular fa-house"></i></div>
+          <li value="0"><a href="#home" aria-label="Home"><i class="fa-regular fa-house"></i></a></li>
+          <li value="1"><a href="#projects" aria-label="Projects"><i class="fa-regular fa-file-code"></i></a></li>
+          <li value="2"><a href="#about" aria-label="About me"><i class="fa-regular fa-circle-user"></i></a></li>
+          <li value="3"><a href="#contact" aria-label="Contact"><i class="fa-regular fa-envelope"></i></a></li>
         </ul>
+        <div id="circle" aria-hidden="true"><i class="fa-regular fa-house"></i></div>
       </div>
     </footer>
 
-    <!-- React widget bundle + mount. main.js runs after so it sees
-         id="btn1" rendered by the React hero. -->
+    <!-- React widget bundle + mount. Navigation observes the host sections. -->
     <script src="my-react-widget/dist/assets/react-widget.js"></script>
     <script>
-      // No DOMContentLoaded wrapper: this script runs synchronously after
-      // the React bundle above (which is non-defer and defines
-      // window.renderMyReactWidget). Mounting now means id="btn1" exists
-      // in the DOM before main.js (defer) runs.
+      // The preceding bundle defines window.renderMyReactWidget.
       var heroEl = document.getElementById("hero-root");
       var footerEl = document.getElementById("footer-root");
       if (heroEl) {

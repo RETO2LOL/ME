@@ -1,6 +1,8 @@
 // Dots background generation
 const dotsContainer = document.getElementById("dots");
 const dotCount = 20;
+const dots = [];
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 for (let i = 0; i < dotCount; i++) {
   const dot = document.createElement("div");
@@ -18,101 +20,137 @@ for (let i = 0; i < dotCount; i++) {
   dot.style.height = `${size}px`;
 
   dotsContainer.appendChild(dot);
+  dots.push({ element: dot, y: y / 100, speed: 0.04 + size * 0.016, phase: x });
 }
 
-// Navbar animation
-// Variables
-let links = document.getElementsByTagName("li");
-let circle = document.getElementById("circle");
-let section1 = document.getElementById("hero-root");
-let section2 = document.querySelector(".cardText");
-let section3 = document.getElementById("AboutMeNavigation");
-let section4 = document.getElementById("contactNavigation");
-let ShouldRunCondtion = true;
-let triggerd = false;
+function updateDots() {
+  const height = window.innerHeight;
+  const padding = 30;
+  const span = height + padding * 2;
+  const scroll = Math.max(0, window.scrollY);
 
-// Functions
-function moveNav(index, iconHTML) {
-  for (let link of links) {
-    link.style.opacity = "1";
+  for (const dot of dots) {
+    if (reducedMotion.matches) {
+      dot.element.style.transform = "";
+      continue;
+    }
+
+    const startY = dot.y * height;
+    const position = startY - scroll * dot.speed;
+    // Wrap beyond the viewport edges so dots stay distributed on long pages.
+    const wrappedY = ((position + padding) % span + span) % span - padding;
+    const driftX = (Math.sin(scroll * 0.001 + dot.phase) - Math.sin(dot.phase)) * 16;
+    dot.element.style.transform = `translate3d(${driftX}px, ${wrappedY - startY}px, 0)`;
+  }
+}
+
+// Track real sections in document order, using the navbar's anchor targets.
+const sections = [...document.querySelectorAll("[data-nav-section]")];
+const navLinks = [...document.querySelectorAll("#nav .navbar li > a")];
+const circle = document.getElementById("circle");
+let activeSection = null;
+let navFrame = null;
+
+function updateNavigation() {
+  if (!sections.length || !circle) return;
+
+  // One stable reading line avoids competing intersection callbacks and
+  // works even when a section is taller than the viewport.
+  const readingLine = window.innerHeight * 0.35;
+  let currentSection = sections[0];
+  for (const section of sections) {
+    if (section.getBoundingClientRect().top <= readingLine) {
+      currentSection = section;
+    }
   }
 
-  circle.style.left = 80 * index + "px";
-  circle.innerHTML = iconHTML;
-
-  links[index].style.opacity = "0";
-}
-for (let link of links) {
-  link.onclick = function () {
-    moveNav(this.value, this.innerHTML);
-    ShouldRunCondtion = false;
-    triggerd = true;
-    setTimeout(() => {
-      triggerd = false;
-    }, 800);
-  };
-}
-window.addEventListener("scroll", () => {
-  if (triggerd) return;
-  if (!ShouldRunCondtion) {
-    ShouldRunCondtion = true;
+  // The last section may be too short to reach the reading line.
+  if (window.scrollY > 0 &&
+      window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+    currentSection = sections[sections.length - 1];
   }
-});
-section1.onclick = function () {
-  moveNav(1, links[1].innerHTML);
-};
 
-// Intersection Observer for automatic navigation
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) {
-        return;
-      }
+  const activeLink = navLinks.find(
+    (link) => link.hash === `#${currentSection.id}`,
+  );
+  if (!activeLink) return;
 
-      if (ShouldRunCondtion && entry.target.id === "hero-root") {
-        moveNav(0, links[0].innerHTML);
-      }
+  const activeItem = activeLink.parentElement;
+  circle.style.left = `${activeItem.parentElement.offsetLeft + activeItem.offsetLeft +
+    (activeItem.offsetWidth - circle.offsetWidth) / 2}px`;
+  if (activeSection === currentSection) return;
+  activeSection = currentSection;
 
-      if (ShouldRunCondtion && entry.target.classList.contains("cardText")) {
-        moveNav(1, links[1].innerHTML);
-      }
-      if (ShouldRunCondtion && entry.target.id === "AboutMeNavigation") {
-        moveNav(2, links[2].innerHTML);
-      }
-      if (ShouldRunCondtion && entry.target.id === "contactNavigation") {
-        moveNav(3, links[3].innerHTML);
-      }
-    });
-  },
-  {
-    threshold: 0.5,
-  },
-);
+  for (const link of navLinks) {
+    const isActive = link === activeLink;
+    link.parentElement.style.opacity = isActive ? "0" : "1";
+    if (isActive) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  }
+  circle.innerHTML = activeLink.innerHTML;
+}
 
-observer.observe(section1);
-observer.observe(section2);
-observer.observe(section3);
-observer.observe(section4);
+function scheduleNavigationUpdate() {
+  if (navFrame !== null) return;
+  navFrame = requestAnimationFrame(() => {
+    navFrame = null;
+    updateNavigation();
+    updateDots();
+  });
+}
+
+// Follow actual scroll position, including hero buttons and interrupted
+// smooth scrolling, without temporarily disabling navigation tracking.
+window.addEventListener("scroll", scheduleNavigationUpdate, { passive: true });
+window.addEventListener("resize", scheduleNavigationUpdate);
+window.addEventListener("load", scheduleNavigationUpdate);
+window.addEventListener("pageshow", scheduleNavigationUpdate);
+reducedMotion.addEventListener("change", scheduleNavigationUpdate);
+
+// Hide visually while preserving layout so the observer can detect sections.
+// Reset offscreen so each visit reveals again. Without observer support,
+// leave everything visible.
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      entry.target.classList.toggle("is-visible", entry.isIntersecting);
+    }
+    scheduleNavigationUpdate();
+  }, { threshold: 0 });
+
+  for (const section of document.querySelectorAll("[data-reveal]")) {
+    revealObserver.observe(section);
+  }
+  document.documentElement.classList.add("reveal-ready");
+}
+
+updateNavigation();
+updateDots();
 
 // Dark & Light mode toggle
 let btn = document.getElementById("toggle");
 
+function updateThemeButton() {
+  const isLight = document.body.classList.contains("Light");
+  btn.setAttribute("aria-label", isLight ? "Switch to dark mode" : "Switch to light mode");
+  btn.setAttribute("aria-pressed", String(isLight));
+  btn.innerHTML = `<i class="${isLight ? "fa-solid" : "fa-regular"} fa-lightbulb" aria-hidden="true"></i>`;
+}
+
 if (localStorage.getItem("theme") === "Light") {
   document.body.classList.add("Light");
-  btn.innerHTML = `<i class="fa-solid fa-lightbulb"></i>`;
 }
+updateThemeButton();
 
 btn.onclick = () => {
   document.body.classList.toggle("Light");
 
   if (document.body.classList.contains("Light")) {
     localStorage.setItem("theme", "Light");
-    btn.innerHTML = `<i class="fa-solid fa-lightbulb"></i>`;
   } else {
     localStorage.setItem("theme", "dark");
-    btn.innerHTML = `<i class="fa-regular fa-lightbulb"></i>`;
   }
+  updateThemeButton();
 };
 
 
