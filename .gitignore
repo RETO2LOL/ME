@@ -1,4 +1,6 @@
 .aider*
+.claude/
+claude/
 cloude/
 worker/.wrangler/
 worker/node_modules/
