@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Birthstone&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <script
@@ -43,27 +43,34 @@
 
     <!-- My Projects -->
 
-    <section id="projects" data-nav-section data-reveal>
-      <h1 class="MainHeader3">My Projects</h1>
+    <section id="projects" aria-labelledby="projects-heading" data-nav-section data-reveal>
+      <h1 class="MainHeader3" id="projects-heading">My Projects</h1>
       <div class="cards">
-        <div class="card">
-          <div class="card-con">
-            <i class="fa-solid fa-ban"></i>
-            <span class="cardText">For future Projects</span>
+        <article class="card">
+          <div class="project-media">
+            <a href="https://github.com/RETO2LOL/MusicPlayer_for_MPD" aria-label="View MPD clients on GitHub">
+              <img src="./public/MPDimage.png" alt="MPD logo with headphones" width="1254" height="1254" loading="lazy" decoding="async">
+            </a>
           </div>
-        </div>
-        <div class="card">
           <div class="card-con">
-            <i class="fa-solid fa-ban"></i>
-            <span class="cardText">For future Projects</span>
+            <p class="project-label">Music / Software</p>
+            <h2 class="cardText">MPD clients</h2>
           </div>
-        </div>
-        <div class="card">
+        </article>
+        <article class="card card-placeholder">
+          <div class="project-media" aria-hidden="true"><span class="project-plus">+</span></div>
           <div class="card-con">
-            <i class="fa-solid fa-ban"></i>
-            <span class="cardText">For future Projects</span>
+            <p class="project-label">Coming next</p>
+            <h2 class="cardText">Future project</h2>
           </div>
-        </div>
+        </article>
+        <article class="card card-placeholder">
+          <div class="project-media" aria-hidden="true"><span class="project-plus">+</span></div>
+          <div class="card-con">
+            <p class="project-label">Coming next</p>
+            <h2 class="cardText">Future project</h2>
+          </div>
+        </article>
       </div>
     </section>
     <!-- About Me & Skills -->

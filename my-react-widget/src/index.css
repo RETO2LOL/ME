@@ -2,5 +2,5 @@
    disturb the host page's own styles. The host already has its own reset. */
 #hero-root,
 #footer-root {
-  /* nothing here yet — keep the widget transparent to host layout */
+  --font-sans: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
